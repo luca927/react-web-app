@@ -1,8 +1,17 @@
 <?php
-use App\Http\Controllers\DipendenteController;
-use Illuminate\Http\Request;
+
+use App\Http\Controllers\MessaggioController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/dipendenti/{id}/nota', [DipendenteController::class, 'salvaNota']);
-Route::get('/dipendenti/{id}', [DipendenteController::class, 'mostra']);
-Route::delete('/dipendenti/{id}/nota', [DipendenteController::class, 'eliminaNota']);
+/*
+|--------------------------------------------------------------------------
+| API Routes - Reactiva Studio
+|--------------------------------------------------------------------------
+*/
+
+// Endpoint pubblico: invio contatti dal form React
+Route::post('/messaggi', [MessaggioController::class, 'store']);
+
+// Endpoint gestione messaggi per pannello Admin
+Route::get('/messaggi', [MessaggioController::class, 'index']);
+Route::delete('/messaggi/{id}', [MessaggioController::class, 'destroy']);
